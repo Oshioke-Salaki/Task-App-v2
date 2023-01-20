@@ -1,2 +1,2 @@
 #Task App-v2
-Decided to do a remake of my former Task App application. But this time i will be using Vite with ReactJS.
+Decided to do a remake of my former Task App application with some additional new features such as editing and deletion of tasks. But this time i will be using Vite with ReactJS.

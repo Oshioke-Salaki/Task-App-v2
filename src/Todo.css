@@ -14,26 +14,23 @@
 .Todo-task {
     position: relative;
     transition: opacity 0.4s linear;
+    cursor: pointer;
 }
 
-.Todo.completed {
+.Todo .completed {
     transition: opacity 300ms ease-in-out;
     transition-delay: 200ms;
     opacity: 0.5;
 }
 
-.Todo.completed .Todo-task {
-    /* opacity: 0.6; */
-}
-
-.Todo.completed .Todo-task:before {
+.Todo .completed::before {
     content: '';
     position: absolute;
     top: 50%;
     left: -0.5rem;
     display: block;
-    width: 0%;
-    height: 4px;
+    width: 0;
+    height: 3px;
     background: #fff;
     animation: strikeitem 0.3s ease-in 0s forwards;
 }
@@ -55,10 +52,8 @@
     font-size: 1em;
     margin: 0.4em;
     background: none;
-    -webkit-appearance: none;
     cursor: pointer;
-    /* color: #fff; */
-    color: black;
+    color: #fff;
 }
 
 .Todo-edit-form {
@@ -78,6 +73,12 @@
     background: #f7f1f1;
     padding: 0 1.5em;
     font-size: initial;
+    outline: none;
+}
+
+.Todo-edit-form input:focus {
+    outline: none;
+    border: none;
 }
 
 .Todo-edit-form button {
@@ -101,4 +102,9 @@
 .Todo-edit-form button {
     font-family: 'Quicksand', sans-serif;
     height: 3rem;
+}
+
+*/ .completed {
+    color: lightgray;
+    text-decoration: line-through;
 }
