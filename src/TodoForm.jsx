@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { v4 as uuid } from 'uuid';
 
 class TodoForm extends Component {
   constructor(props) {
@@ -14,24 +15,24 @@ class TodoForm extends Component {
 
   submitHandler(e) {
     e.preventDefault();
-    this.props.addTodo(this.state);
+    this.props.addTodo({ ...this.state, id: uuid() });
+    this.setState({ newItem: '' });
   }
 
   render() {
     return (
-      <div>
-        <h2>New Todo</h2>
-        <form onSubmit={this.submitHandler}>
-          <input
-            type="text"
-            name="newItem"
-            placeholder="New Todo"
-            value={this.state.newItem}
-            onChange={this.changeHandler}
-          />
-          <button>ADD ITEM</button>
-        </form>
-      </div>
+      <form onSubmit={this.submitHandler}>
+        <label htmlFor="newItem">New Todo</label>
+        <input
+          id="newItem"
+          type="text"
+          name="newItem"
+          placeholder="New Todo"
+          value={this.state.newItem}
+          onChange={this.changeHandler}
+        />
+        <button>ADD ITEM</button>
+      </form>
     );
   }
 }

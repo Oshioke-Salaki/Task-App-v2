@@ -57,7 +57,8 @@
     background: none;
     -webkit-appearance: none;
     cursor: pointer;
-    color: #fff;
+    /* color: #fff; */
+    color: black;
 }
 
 .Todo-edit-form {

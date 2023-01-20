@@ -7,10 +7,29 @@ class TodoApp extends Component {
     super(props);
     this.state = { todos: [] };
     this.addHandler = this.addHandler.bind(this);
+    this.removeHandler = this.removeHandler.bind(this);
+    this.update = this.update.bind(this);
   }
 
   addHandler(todo) {
     this.setState({ todos: [...this.state.todos, todo] });
+  }
+
+  removeHandler(id) {
+    this.setState({
+      todos: this.state.todos.filter((t) => t.id !== id),
+    });
+  }
+
+  update(id, updatedTask) {
+    const updatedTodos = this.state.todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, task: updatedTask };
+      }
+      return todo;
+    });
+
+    this.setState({ todos: updatedTodos });
   }
   render() {
     return (
@@ -21,7 +40,12 @@ class TodoApp extends Component {
         </div>
         <ul>
           {this.state.todos.map((todo) => (
-            <Todo content={todo.newItem} />
+            <Todo
+              key={todo.id}
+              id={todo.id}
+              content={todo.newItem}
+              removeTodo={this.removeHandler}
+            />
           ))}
         </ul>
         <TodoForm addTodo={this.addHandler} />
